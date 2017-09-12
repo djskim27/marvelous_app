@@ -90,7 +90,7 @@ class App extends Component {
         <Route exact path = '/'  render={routeProps => 
           <HomePage {...routeProps} comics = {this.state.marvelData}/>}
           />
-        <Route exact path = '/:comicId' />
+        <Route exact path = '/comics/:id' component={ComicShow}/>
         </div>
       </Router>
     );
