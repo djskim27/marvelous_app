@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import md5 from 'md5'
+import Moment from 'react-moment'
 
 export default class ComicShow extends Component {
     constructor(){
@@ -49,7 +50,7 @@ export default class ComicShow extends Component {
         <h1><strong>Title</strong>: {comic.title}</h1>
         <img src={comic.thumbnail}/>
         <p><strong>Description:</strong> {comic.description}</p>
-        <p><strong>Release Date</strong>: {comic.releaseDate}</p>
+        <p><strong>Release Date:</strong> <Moment format="MM/DD/YYYY">{comic.releaseDate}</Moment></p>
       </div>
     )
   }
