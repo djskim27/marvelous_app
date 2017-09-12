@@ -34,6 +34,7 @@ class App extends Component {
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
     const url = `https://gateway.marvel.com/v1/public/comics?limit=100&offset=1500&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+    console.log(url)
     
     try {
       const res = await axios.get(url);
