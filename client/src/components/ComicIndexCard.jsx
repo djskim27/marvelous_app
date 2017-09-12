@@ -1,9 +1,12 @@
 import React from 'react';
 
-const ComicIndexCard = () => {
+const ComicIndexCard = (props) => {
+    const comic = props.comic;
+    console.log(comic)
+    
     return (
         <div>
-            
+            <img src={`${comic.thumbnail.path}.jpg`} />
         </div>
     );
 };
