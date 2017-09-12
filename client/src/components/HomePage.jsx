@@ -6,7 +6,6 @@ export default class HomePage extends Component {
 
     return (
       <div>
-        This is HomePage
         <ComicIndex comics = {this.props.comics}/>
       </div>
     )

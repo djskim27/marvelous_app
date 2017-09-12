@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
+const ComicCard = styled.div`
+img {
+    width: 250px;
+}
+`
 
 const ComicIndexCard = (props) => {
     const comic = props.comic;
@@ -9,7 +15,9 @@ const ComicIndexCard = (props) => {
     return (
         <div>
             <Link to={`/comics/${comic.id}`}>
-                <img src={`${comic.thumbnail.path}.jpg`} />
+            
+                <ComicCard> <img src={`${comic.thumbnail.path}.jpg`} /> </ComicCard>
+                
             </Link>
         </div>
     );
