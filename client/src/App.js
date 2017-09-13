@@ -3,10 +3,13 @@ import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 import md5 from 'md5';
-import MainNavBar from './components/MainNavBar'
-import HomePage from './components/HomePage'
-import ComicIndex from './components/ComicIndex'
-import ComicShow from './components/ComicShow'
+import MainNavBar from './components/MainNavBar';
+import HomePage from './components/HomePage';
+import ComicIndex from './components/ComicIndex';
+import ComicShow from './components/ComicShow';
+import SignIn from './components/SignIn';
+import Hello from './components/Hello';
+import {setAxiosDefaults} from './util';
 
 
 class App extends Component {
@@ -19,6 +22,7 @@ class App extends Component {
   }
 
   componentWillMount(){
+   setAxiosDefaults();
     this._setDefaultMarvelData();
   }
 
@@ -33,11 +37,21 @@ class App extends Component {
     const privateKey = process.env.REACT_APP_PRIVATE_API_KEY;
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
-    const url = `https://gateway.marvel.com/v1/public/comics?limit=100&offset=1500&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+    const url = `http://gateway.marvel.com/v1/public/comics?limit=100&offset=1500&ts=${ts}&apikey=${publicKey}&hash=${hash}`
     console.log(url)
     
     try {
-      const res = await axios.get(url);
+      const res = await axios.get(url, 
+        { transformRequest: [(data, headers) => {
+          delete headers['access-token']
+          delete headers['uid']
+          delete headers['client']
+          delete headers['expiry']
+          delete headers['token-type']
+          delete headers.common
+          return data;
+        }]
+      });
       await this.setState({marvelData: res.data.data.results});
       console.log(this.state.marvelData)
       return res.data.data.results;
@@ -75,7 +89,6 @@ class App extends Component {
         <div>
           <MainNavBar />
           <div className="App">
-            <h1>MARVELous</h1>
             {/* <form onSubmit={this._getMarvelData}>
             <div>
               <label htmlFor="input">Search for a hero </label>
@@ -92,6 +105,9 @@ class App extends Component {
           <HomePage {...routeProps} comics = {this.state.marvelData}/>}
           />
         <Route exact path = '/comics/:id' component={ComicShow}/>
+      
+        <Route exact path = '/signin' component={SignIn} />
+        <Route exact path = '/hello' component ={Hello} />
         </div>
       </Router>
     );

@@ -25,10 +25,21 @@ export default class ComicShow extends Component {
     const privateKey = process.env.REACT_APP_PRIVATE_API_KEY;
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
-    const url = `https://gateway.marvel.com/v1/public/comics?id=${this.props.match.params.id}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+    const url = `http://gateway.marvel.com/v1/public/comics?id=${this.props.match.params.id}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
     
         try {
-        const res = await axios.get(url);
+        const res = await axios.get(url,
+            { transformRequest: [(data, headers) => {
+                delete headers['access-token']
+                delete headers['uid']
+                delete headers['client']
+                delete headers['expiry']
+                delete headers['token-type']
+                delete headers.common
+                return data;
+              }]
+            }
+        );
         await this.setState({comicData: {
             title: res.data.data.results[0].title,
             thumbnail: `${res.data.data.results[0].thumbnail.path}.jpg`,
