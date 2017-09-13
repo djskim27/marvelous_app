@@ -5,10 +5,13 @@ class Api::ComicsController < ApplicationController
         @comics = @collection.comics.all 
         render json: @comics
     end
+    def new
+        @comic = Comic.new
+    end
     def create
         @user = current_user
         @collection = @user.collection
-        @collection.comics.create(comic_params)
+        @comic = @collection.comics.create(comic_params)
     end
     def destroy
         @comic = Comic.find(params[:id])
@@ -17,6 +20,6 @@ class Api::ComicsController < ApplicationController
 
     private
     def comic_params
-        params.require(:comic).permit(:api_id, :title, :img_url, :description )
+        params.require(:comic).permit(:api_id, :title, :thumbnail)
     end
 end

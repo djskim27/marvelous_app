@@ -9,3 +9,6 @@ User.destroy_all
 
 richard = User.create(email: 'djs.kim27@gmail.com', password:'october27', password_confirmation:'october27')
 richard.collection = Collection.create()
+richard.collection.comics = [
+    Comic.create()
+]

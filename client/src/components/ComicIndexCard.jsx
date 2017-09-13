@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ComicCard = styled.div`
+
 img {
-    width: 250px;
+    width: 200px;
+    height: 304px;
+    margin: 10px;
 }
 `
 

@@ -41,6 +41,7 @@ export default class ComicShow extends Component {
             }
         );
         await this.setState({comicData: {
+            api_id: res.data.data.results[0].id,
             title: res.data.data.results[0].title,
             thumbnail: `${res.data.data.results[0].thumbnail.path}.jpg`,
             description: res.data.data.results[0].description,
@@ -54,6 +55,22 @@ export default class ComicShow extends Component {
             console.log(err);
         }
     }
+
+    _addComicToCollection = async (e) => {
+        e.preventDefault();
+        const payload = {
+            api_id: this.state.comicData.api_id,
+            title: this.state.comicData.title,
+            thumbnail: this.state.comicData.thumbnail
+        }
+        try{
+            const res = await axios.post('/api/comics', payload)
+
+        } catch(err) {
+            console.log(err);
+        }
+
+    }
     render() {
         const comic = this.state.comicData
     return (
@@ -62,6 +79,8 @@ export default class ComicShow extends Component {
         <img src={comic.thumbnail}/>
         <p><strong>Description:</strong> {comic.description}</p>
         <p><strong>Release Date:</strong> <Moment format="MM/DD/YYYY">{comic.releaseDate}</Moment></p>
+        <button onClick={this._addComicToCollection}>Add Comic</button>
+        
       </div>
     )
   }

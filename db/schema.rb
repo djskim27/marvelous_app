@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(version: 20170912221600) do
     t.bigint "collection_id"
     t.integer "api_id"
     t.string "title"
-    t.string "img_url"
-    t.string "description"
+    t.string "thumbnail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_comics_on_collection_id"

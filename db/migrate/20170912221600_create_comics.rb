@@ -4,8 +4,9 @@ class CreateComics < ActiveRecord::Migration[5.1]
       t.references :collection, foreign_key: true
       t.integer :api_id
       t.string :title
-      t.string :img_url
-      t.string :description
+      t.string :thumbnail
+   
+    
 
       t.timestamps
     end
