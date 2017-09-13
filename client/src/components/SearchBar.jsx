@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const SearchBar = (props) => {
+export default class SearchBar extends Component {
+  render() {
     return (
-        <div>
+      <div>
+        <form onSubmit={this.props.searchMarvelData}>
+            <div>
+              <input onChange={this.props.handleChange} type="text" name="input" value={this.props.input} placeholder="Search For A Comic" />
+            </div>
+              
             
-        </div>
-    );
-};
-
-export default SearchBar;
+            <button>Search</button>
+        
+          </form>
+      </div>
+    )
+  }
+}

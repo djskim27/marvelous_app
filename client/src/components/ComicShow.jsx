@@ -40,7 +40,7 @@ export default class ComicShow extends Component {
               }]
             }
         );
-        await this.setState({comicData: {
+            this.setState({comicData: {
             api_id: res.data.data.results[0].id,
             title: res.data.data.results[0].title,
             thumbnail: `${res.data.data.results[0].thumbnail.path}.jpg`,
@@ -48,7 +48,6 @@ export default class ComicShow extends Component {
             releaseDate: res.data.data.results[0].dates[0].date
 
         }});
-        await console.log(this.state.comicData)
         return res.data
 
         } catch (err) {
@@ -76,7 +75,10 @@ export default class ComicShow extends Component {
     return (
       <div>
         <h1><strong>Title</strong>: {comic.title}</h1>
-        <img src={comic.thumbnail}/>
+        {comic.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' ?
+        <img src='https://i.imgur.com/yLppAf3.png'/>:
+        <img src={comic.thumbnail}/>}
+       
         <p><strong>Description:</strong> {comic.description}</p>
         <p><strong>Release Date:</strong> <Moment format="MM/DD/YYYY">{comic.releaseDate}</Moment></p>
         <button onClick={this._addComicToCollection}>Add Comic</button>

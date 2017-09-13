@@ -3,8 +3,7 @@ import ComicIndexCard from './ComicIndexCard'
 import styled from 'styled-components'
 
 const ComicContainer = styled.div`
-background: rgba(255,255,255,0.9);
-margin-top: 5%;
+margin-top: 10px;
 margin-left: 10%;
 margin-right: 10%;
 padding: 10px;

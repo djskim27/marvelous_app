@@ -20,6 +20,11 @@ a {
 }
 `;
 
+const MarvelFont = styled.div`
+ h1 {
+   font-family: 'Bangers', cursive;
+ }
+`
 
 export default class MainNavBar extends Component {
   constructor(){
@@ -59,7 +64,10 @@ export default class MainNavBar extends Component {
       return (
         <Nav>
         <Link to="/">
-            <h1>Home</h1>
+          <MarvelFont>
+            <h1>Marvel</h1>
+          </MarvelFont>
+         
         </Link>
         <div>
             <span>Signed In As: {this.state.user.email}</span>

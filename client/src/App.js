@@ -9,6 +9,7 @@ import ComicIndex from './components/ComicIndex';
 import ComicShow from './components/ComicShow';
 import SignIn from './components/SignIn';
 import Hello from './components/Hello';
+import SearchBar from './components/SearchBar'
 import {setAxiosDefaults} from './util';
 
 
@@ -37,7 +38,7 @@ class App extends Component {
     const privateKey = process.env.REACT_APP_PRIVATE_API_KEY;
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
-    const url = `http://gateway.marvel.com/v1/public/comics?limit=100&offset=1500&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+    const url = `http://gateway.marvel.com/v1/public/comics?limit=20&offset=1500&ts=${ts}&apikey=${publicKey}&hash=${hash}`
     console.log(url)
     
     try {
@@ -52,7 +53,7 @@ class App extends Component {
           return data;
         }]
       });
-      await this.setState({marvelData: res.data.data.results});
+      this.setState({marvelData: res.data.data.results});
       console.log(this.state.marvelData)
       return res.data.data.results;
       
@@ -63,24 +64,34 @@ class App extends Component {
 
   }
 
-  // _getMarvelData = async (e) => {
-  //   e.preventDefault();
-  //   const publicKey = process.env.REACT_APP_PUBLIC_API_KEY;
-  //   const privateKey = process.env.REACT_APP_PRIVATE_API_KEY;
-  //   const ts = Date.now();
-  //   const hash = md5(ts + privateKey + publicKey)
-  //   const url = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${this.state.input}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
-  //   console.log(url)
-  //   try {
-  //     const res = await axios.get(url);
-  //     await this.setState({marvelData: res.data.data.results[0].thumbnail});
-  //     return res.data.data.results[0].thumbnail;
+  _searchMarvelData = async (e) => {
+    e.preventDefault();
+    const publicKey = process.env.REACT_APP_PUBLIC_API_KEY;
+    const privateKey = process.env.REACT_APP_PRIVATE_API_KEY;
+    const ts = Date.now();
+    const hash = md5(ts + privateKey + publicKey)
+    const url = `https://gateway.marvel.com/v1/public/comics?titleStartsWith=${this.state.input}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+    console.log(url)
+    try {
+      const res = await axios.get(url,
+        { transformRequest: [(data, headers) => {
+          delete headers['access-token']
+          delete headers['uid']
+          delete headers['client']
+          delete headers['expiry']
+          delete headers['token-type']
+          delete headers.common
+          return data;
+        }]
+      });
+      this.setState({marvelData: res.data.data.results});
+      return res.data.data.results;
 
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
+    } catch (err) {
+      console.log(err)
+    }
 
-  // }
+  }
 
 
   render() {
@@ -89,17 +100,7 @@ class App extends Component {
         <div>
           <MainNavBar />
           <div className="App">
-            {/* <form onSubmit={this._getMarvelData}>
-            <div>
-              <label htmlFor="input">Search for a hero </label>
-              <input onChange={this._handleChange} type="text" name="input" value={this.state.input} />
-            </div>
-              
-            
-            <button>Search</button>
-        
-          </form>
-          <img src={`${this.state.marvelData.path}.jpg`}/> */}
+            <SearchBar handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
           </div>
         <Route exact path = '/'  render={routeProps => 
           <HomePage {...routeProps} comics = {this.state.marvelData}/>}
