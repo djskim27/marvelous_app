@@ -22,10 +22,15 @@ class Hello extends Component {
     password_confirmation: this.state.password_confirmation
   }
   const response = await axios.post('/auth', payload)
+  
   saveAuthTokens(response.headers)
+  this._createNewCollection();
   this.setState({redirect: true})
 }
 
+_createNewCollection = async () => {
+    const res = await axios.post('/api/collections')
+}
  _signIn = (e) => {
    e.preventDefault();
    this.setState({redirect: true})
