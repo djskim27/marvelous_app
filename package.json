@@ -1,11 +1,12 @@
 {
-    "name": "marvelous_app",
-    "engines": {
-      "node": "8.2.1"
-    },
-    "scripts": {
-      "build": "cd client && npm install && npm run build && cd ..",
-      "deploy": "cp -a client/build/. public/",
-      "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
-    }
-  }
+  "name": "marvelous_app",
+  "engines": {
+    "node": "8.2.1"
+  },
+  "scripts": {
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  },
+  "dependencies": {}
+}
