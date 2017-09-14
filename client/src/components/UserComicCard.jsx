@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export default class UserComicCard extends Component {
-  render() {
+const UserComicCard = (props) => {
     return (
-      <div>
-        FUCK YOU
-      </div>
-    )
-  }
-}
+        <div>
+            FUCK YOU
+        </div>
+    );
+};
+
+export default UserComicCard;
