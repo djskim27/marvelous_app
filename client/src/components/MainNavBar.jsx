@@ -71,7 +71,7 @@ export default class MainNavBar extends Component {
         </Link>
         <div>
             <span>Signed In As: {this.state.user.email}</span>
-            <Link to='#'>My Profile</Link>
+            <Link to='/profile'>My Profile</Link>
             <a href="#" onClick={this._logOut}> Log Out </a>
         </div>
         </Nav>

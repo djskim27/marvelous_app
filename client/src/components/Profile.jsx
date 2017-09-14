@@ -8,6 +8,7 @@ export default class Profile extends Component {
       user: {}
     }
   }
+  
   render() {
     return (
       <div>
