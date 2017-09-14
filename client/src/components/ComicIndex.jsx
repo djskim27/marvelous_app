@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ComicIndexCard from './ComicIndexCard'
+import ComicImageCard from './ComicImageCard'
 import styled from 'styled-components'
 
 const ComicContainer = styled.div`
@@ -18,7 +18,7 @@ export default class ComicIndex extends Component {
     const comicList = comics.map((comic, i) => {
       return(
         
-          <ComicIndexCard comic = {comic} key={i}/>
+          <ComicImageCard comic = {comic} key={i}/>
     
       )
     })

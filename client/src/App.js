@@ -158,27 +158,21 @@ class App extends Component {
           <div className="App">
             <SearchBar handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
           </div>
-        <button onClick={this._toggleModal}>Show Modal</button>
 
-        <Modal isOpen={this.state.isActive} style={customStyles} contentLabel="Example Modal">
 
-          <ComicCollection userComicCollection={this.state.userComicCollection}/>
-
-          <button onClick={this._toggleModal}>Close Modal</button>
-        </Modal>
 
         <Route exact path = '/'  render={routeProps => 
-          <HomePage {...routeProps} comics = {this.state.marvelData}/>}
+          <HomePage {...routeProps} comics = {this.state.marvelData} toggleModal ={this._toggleModal} style={this.customStyles}/>}
           />
-        <Route exact path = '/comics/:id' component={ComicShow}/>
+        {/* <Route exact path = '/comics/:id' component={ComicShow}/> */}
       
         <Route exact path = '/signin' component={SignIn} />
         <Route exact path = '/signup' component ={Hello} />
         <Route exact path = '/profile' component ={Profile}/>
         <Route exact path = '/profile/edit' component ={EditProfile}/>
-        {/* <Route exact path = '/collection' render={routeProps => 
+        <Route exact path = '/collection' render={routeProps => 
           <ComicCollection {...routeProps} userComicCollection = {this.state.userComicCollection}/>}
-          /> */}
+          />
         </div>
       </Router>
     );

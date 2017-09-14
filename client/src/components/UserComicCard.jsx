@@ -1,9 +1,10 @@
 import React from 'react';
 
 const UserComicCard = (props) => {
+    
     return (
         <div>
-            FUCK YOU
+            <img src={props.comic.thumbnail}/>
         </div>
     );
 };

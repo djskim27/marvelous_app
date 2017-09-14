@@ -25,7 +25,7 @@ export default class ComicShow extends Component {
     const privateKey = process.env.REACT_APP_PRIVATE_API_KEY;
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
-    const url = `https://gateway.marvel.com/v1/public/comics?id=${this.props.match.params.id}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+    const url = `https://gateway.marvel.com/v1/public/comics?id=${this.props.comicId}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
     
         try {
         const res = await axios.get(url,

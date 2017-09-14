@@ -6,7 +6,7 @@ export default class HomePage extends Component {
 
     return (
       <div>
-        <ComicIndex comics = {this.props.comics}/>
+        <ComicIndex comics = {this.props.comics} toggleModal ={this.props.toggleModal} style={this.props.customStyles}/>
       </div>
     )
   }
