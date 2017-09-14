@@ -4,4 +4,5 @@ class Api::CollectionsController < ApplicationController
         @user = current_user
         @user.collection = Collection.create()
     end
+    
 end
