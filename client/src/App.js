@@ -14,7 +14,36 @@ import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
 import ComicCollection from './components/ComicCollection';
 import {setAxiosDefaults} from './util';
-import Modal from 'react-modal'
+import Modal from 'react-modal';
+
+const customStyles = {
+  
+  overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(150, 20, 8, 0.46)'
+  },
+  content : {
+    position                   : 'absolute',
+    top                        : '100px',
+    left                       : '400px',
+    right                      : '400px',
+    bottom                     : '100px',
+    border                     : '1px solid #ccc',
+    background                 : '#fff',
+    overflow                   : 'auto',
+    WebkitOverflowScrolling    : 'touch',
+    borderRadius               : '4px',
+    outline                    : 'none',
+    padding                    : '20px'
+
+  }
+
+
+}
 
 
 class App extends Component {
@@ -129,7 +158,7 @@ class App extends Component {
             <SearchBar handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
           </div>
         <button onClick={this._toggleModal}>Show Modal</button>
-        <Modal isOpen={this.state.isActive} contentLabel="Example Modal">
+        <Modal isOpen={this.state.isActive} contentLabel="Example Modal" style={customStyles}>
           Hello 
           <button onClick={this._toggleModal}>Close Modal</button>
         </Modal>
