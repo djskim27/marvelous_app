@@ -78,7 +78,6 @@ _createNewCollection = async () => {
          </div>
          
          <button>Sign Up</button>
-         <button onClick={this._signIn}>Log In</button>
        </form>
       <GiphySelect/>
      </div>

@@ -110,7 +110,7 @@ class App extends Component {
         <Route exact path = '/comics/:id' component={ComicShow}/>
       
         <Route exact path = '/signin' component={SignIn} />
-        <Route exact path = '/hello' component ={Hello} />
+        <Route exact path = '/signup' component ={Hello} />
         <Route exact path = '/profile' component ={Profile}/>
         <Route exact path = '/profile/edit' component ={EditProfile}/>
         </div>

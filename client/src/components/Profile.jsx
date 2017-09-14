@@ -32,6 +32,26 @@ export default class Profile extends Component {
     }
 
   }
+
+  _deleteCurrentUser = async () => {
+    try {
+      const res = await axios.delete('/auth');
+      this._logout();
+      return res.data
+    } 
+    catch(err) {
+      console.log(err);
+    }
+  }
+
+  _logOut = async () => {
+    console.log("CLICK");
+    const response = await axios.delete("/auth/sign_out");
+    //Forces refresh of browser
+    
+  };
+
+  
   
   render() {
     return (
@@ -43,7 +63,8 @@ export default class Profile extends Component {
         <h3>Created At: {this.state.user.created_at}</h3>
         <h3>Updated At: {this.state.user.updated_at}</h3>
         <Link to='/profile/edit'><button>Edit Profile</button></Link>
-        <button>Delete Profile</button>
+
+        <a href='/signup'><button onClick={this._deleteCurrentUser}>Delete Profile</button></a>
 
         </div>
         

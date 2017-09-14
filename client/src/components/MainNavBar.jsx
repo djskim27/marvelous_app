@@ -55,7 +55,7 @@ export default class MainNavBar extends Component {
     console.log("CLICK");
     const response = await axios.delete("/auth/sign_out");
     //Forces refresh of browser
-    window.location.reload();
+ 
   };
 
   
@@ -72,7 +72,7 @@ export default class MainNavBar extends Component {
         <div>
             <span>Signed In As: {this.state.user.email}</span>
             <Link to='/profile'>My Profile</Link>
-            <a href="#" onClick={this._logOut}> Log Out </a>
+            <a href="/signin" onClick={this._logOut}> Log Out </a>
         </div>
         </Nav>
       )
@@ -83,10 +83,14 @@ export default class MainNavBar extends Component {
       
       <Nav>
           
-          <h2><Link to='/'>MARVELous</Link></h2>
+          <Link to="/">
+          <MarvelFont>
+            <h1>Marvel</h1>
+          </MarvelFont>
+        </Link>
 
           <div>
-            <Link to='/hello'>Sign Up</Link>
+            <Link to='/signup'>Sign Up</Link>
             <Link to='/signin'>Sign In</Link>
           </div>
         
