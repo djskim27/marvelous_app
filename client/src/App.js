@@ -158,10 +158,7 @@ class App extends Component {
             <SearchBar handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
           </div>
         <button onClick={this._toggleModal}>Show Modal</button>
-        <Modal isOpen={this.state.isActive} contentLabel="Example Modal" style={customStyles}>
-          Hello 
-          <button onClick={this._toggleModal}>Close Modal</button>
-        </Modal>
+        <ComicCollection isOpen={this.state.isActive} toggleModal={this._toggleModal} />
         <Route exact path = '/'  render={routeProps => 
           <HomePage {...routeProps} comics = {this.state.marvelData}/>}
           />
