@@ -11,7 +11,8 @@ import SignIn from './components/SignIn';
 import Hello from './components/Hello';
 import SearchBar from './components/SearchBar';
 import Profile from './components/Profile';
-import EditProfile from './components/EditProfile'
+import EditProfile from './components/EditProfile';
+import ComicCollection from './components/ComicCollection';
 import {setAxiosDefaults} from './util';
 
 
@@ -20,13 +21,15 @@ class App extends Component {
     super();
     this.state = {
       marvelData: [],
-      input: ''
+      input: '',
+      userComicCollection:[]
     }
   }
 
   componentWillMount(){
    setAxiosDefaults();
     this._setDefaultMarvelData();
+    this._fetchUserComicCollection();
   }
 
   _handleChange = (e) => {
@@ -95,6 +98,18 @@ class App extends Component {
 
   }
 
+  _fetchUserComicCollection = async() => {
+    try {
+      const res = await axios.get('/api/comics');
+      console.log(res.data)
+      return res.data
+    }
+    catch(err) {
+
+    }
+
+  }
+
 
   render() {
     return (
@@ -113,6 +128,9 @@ class App extends Component {
         <Route exact path = '/signup' component ={Hello} />
         <Route exact path = '/profile' component ={Profile}/>
         <Route exact path = '/profile/edit' component ={EditProfile}/>
+        <Route exact path = '/collection' render={routeProps => 
+          <ComicCollection {...routeProps} userComicCollection = {this.state.userComicCollection}/>}
+          />
         </div>
       </Router>
     );
