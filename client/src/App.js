@@ -9,7 +9,8 @@ import ComicIndex from './components/ComicIndex';
 import ComicShow from './components/ComicShow';
 import SignIn from './components/SignIn';
 import Hello from './components/Hello';
-import SearchBar from './components/SearchBar'
+import SearchBar from './components/SearchBar';
+import Profile from './components/Profile';
 import {setAxiosDefaults} from './util';
 
 
@@ -109,6 +110,7 @@ class App extends Component {
       
         <Route exact path = '/signin' component={SignIn} />
         <Route exact path = '/hello' component ={Hello} />
+        <Route exact path = '/profile' component ={Profile}/>
         </div>
       </Router>
     );
