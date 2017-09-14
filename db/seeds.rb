@@ -7,5 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 
-richard = User.create(nickname:'DizzDEE', email: 'djs.kim27@gmail.com', password:'october27', password_confirmation:'october27')
-richard.collection = Collection.create()
+

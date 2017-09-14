@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import GiphySelect from 'react-giphy-select';
+import 'react-giphy-select/lib/styles.css';
 import {saveAuthTokens} from '../util'
 
 class Hello extends Component {
  constructor(){
    super();
    this.state = {
+
        email: '',
+       nickname: '',
        password: '',
        password_confirmation: '',
+       image:'',
        redirect: false
    }
  }
@@ -18,8 +23,10 @@ class Hello extends Component {
   e.preventDefault();
   const payload = {
     email: this.state.email,
+    nickname: this.state.nickname,
     password: this.state.password,
-    password_confirmation: this.state.password_confirmation
+    password_confirmation: this.state.password_confirmation,
+    image: this.state.image
   }
   const response = await axios.post('/auth', payload)
   
@@ -54,6 +61,10 @@ _createNewCollection = async () => {
            <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
          </div>
          <div>
+           <label htmlFor="nickname">Nickname: </label>
+           <input onChange={this._handleChange} type="text" name="nickname" value={this.state.nickname} />
+         </div>
+         <div>
            <label htmlFor="password">Password: </label>
            <input onChange={this._handleChange} type="text" name="password" value={this.state.password} />
          </div>
@@ -61,10 +72,15 @@ _createNewCollection = async () => {
            <label htmlFor="password">Confirm Password: </label>
            <input onChange={this._handleChange} type="text" name="password_confirmation" value={this.state.password_confirmation} />
          </div>
+         <div>
+           <label htmlFor="image">Profile GIF </label>
+           <input onChange={this._handleChange} type="text" name="image" value={this.state.image} />
+         </div>
          
          <button>Sign Up</button>
          <button onClick={this._signIn}>Log In</button>
        </form>
+      <GiphySelect/>
      </div>
    );
  }

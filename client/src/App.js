@@ -11,6 +11,7 @@ import SignIn from './components/SignIn';
 import Hello from './components/Hello';
 import SearchBar from './components/SearchBar';
 import Profile from './components/Profile';
+import EditProfile from './components/EditProfile'
 import {setAxiosDefaults} from './util';
 
 
@@ -111,6 +112,7 @@ class App extends Component {
         <Route exact path = '/signin' component={SignIn} />
         <Route exact path = '/hello' component ={Hello} />
         <Route exact path = '/profile' component ={Profile}/>
+        <Route exact path = '/profile/edit' component ={EditProfile}/>
         </div>
       </Router>
     );
