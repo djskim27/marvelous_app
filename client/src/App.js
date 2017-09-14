@@ -134,6 +134,7 @@ class App extends Component {
     try {
       const res = await axios.get('/api/comics');
       console.log(res.data)
+      this.setState({userComicCollection: res.data})
       return res.data
     }
     catch(err) {
@@ -158,7 +159,14 @@ class App extends Component {
             <SearchBar handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
           </div>
         <button onClick={this._toggleModal}>Show Modal</button>
-        <ComicCollection isOpen={this.state.isActive} toggleModal={this._toggleModal} />
+
+        <Modal isOpen={this.state.isActive} style={customStyles} contentLabel="Example Modal">
+
+          <ComicCollection userComicCollection={this.state.userComicCollection}/>
+
+          <button onClick={this._toggleModal}>Close Modal</button>
+        </Modal>
+
         <Route exact path = '/'  render={routeProps => 
           <HomePage {...routeProps} comics = {this.state.marvelData}/>}
           />
@@ -168,9 +176,9 @@ class App extends Component {
         <Route exact path = '/signup' component ={Hello} />
         <Route exact path = '/profile' component ={Profile}/>
         <Route exact path = '/profile/edit' component ={EditProfile}/>
-        <Route exact path = '/collection' render={routeProps => 
+        {/* <Route exact path = '/collection' render={routeProps => 
           <ComicCollection {...routeProps} userComicCollection = {this.state.userComicCollection}/>}
-          />
+          /> */}
         </div>
       </Router>
     );
