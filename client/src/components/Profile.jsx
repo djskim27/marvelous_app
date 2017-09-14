@@ -67,7 +67,7 @@ export default class Profile extends Component {
         <Link to='/profile/edit'><button>Edit Profile</button></Link>
 
         <a href='/signup'><button onClick={this._deleteCurrentUser}>Delete Profile</button></a>
-
+        <Link to={'/collection'}>View Comic Collection</Link>
         </div>
         
       </ProfileContainer>

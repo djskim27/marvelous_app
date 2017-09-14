@@ -60,7 +60,6 @@ class App extends Component {
   componentWillMount(){
    setAxiosDefaults();
     this._setDefaultMarvelData();
-    this._fetchUserComicCollection();
     Modal.setAppElement('body');
   }
 
@@ -171,7 +170,7 @@ class App extends Component {
         <Route exact path = '/profile' component ={Profile}/>
         <Route exact path = '/profile/edit' component ={EditProfile}/>
         <Route exact path = '/collection' render={routeProps => 
-          <ComicCollection {...routeProps} userComicCollection = {this.state.userComicCollection}/>}
+          <ComicCollection {...routeProps} fetchUserComicCollection={this._fetchUserComicCollection } userComicCollection = {this.state.userComicCollection}/>} 
           />
         </div>
       </Router>
