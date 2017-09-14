@@ -14,6 +14,7 @@ import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
 import ComicCollection from './components/ComicCollection';
 import {setAxiosDefaults} from './util';
+import Modal from 'react-modal'
 
 
 class App extends Component {
@@ -22,7 +23,8 @@ class App extends Component {
     this.state = {
       marvelData: [],
       input: '',
-      userComicCollection:[]
+      userComicCollection:[],
+      isActive: false
     }
   }
 
@@ -30,6 +32,7 @@ class App extends Component {
    setAxiosDefaults();
     this._setDefaultMarvelData();
     this._fetchUserComicCollection();
+    Modal.setAppElement('body');
   }
 
   _handleChange = (e) => {
@@ -110,6 +113,12 @@ class App extends Component {
 
   }
 
+  _toggleModal = () => {
+    this.setState({
+      isActive: !this.state.isActive
+    })
+  }
+
 
   render() {
     return (
@@ -119,6 +128,11 @@ class App extends Component {
           <div className="App">
             <SearchBar handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
           </div>
+        <button onClick={this._toggleModal}>Show Modal</button>
+        <Modal isOpen={this.state.isActive} contentLabel="Example Modal">
+          Hello 
+          <button onClick={this._toggleModal}>Close Modal</button>
+        </Modal>
         <Route exact path = '/'  render={routeProps => 
           <HomePage {...routeProps} comics = {this.state.marvelData}/>}
           />
