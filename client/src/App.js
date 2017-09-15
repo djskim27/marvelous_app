@@ -53,7 +53,10 @@ class App extends Component {
       marvelData: [],
       input: '',
       userComicCollection:[],
-      isActive: false
+      isActive: false,
+
+      backgroundImage: 'http://media.comicbook.com/uploads1/2015/02/amazing-spider-man-136-cover-123891.jpg'
+      
     }
   }
 
@@ -148,8 +151,14 @@ class App extends Component {
     })
   }
 
+  _setBackGroundImage = (imgUrl) => {
+    this.setState({backgroundImage: imgUrl})
+  }
 
   render() {
+    const background = {
+    url: this.state.backgroundImage
+  }
     return (
       <Router>
         <div>
@@ -167,10 +176,13 @@ class App extends Component {
       
         <Route exact path = '/signin' component={SignIn} />
         <Route exact path = '/signup' component ={Hello} />
-        <Route exact path = '/profile' component ={Profile}/>
+        {/* <Route exact path = '/profile' component ={Profile}/> */}
+        <Route exact path = '/profile'  render={routeProps => 
+          <Profile {...routeProps} background = {background}/>}/>
+
         <Route exact path = '/profile/edit' component ={EditProfile}/>
         <Route exact path = '/collection' render={routeProps => 
-          <ComicCollection {...routeProps} fetchUserComicCollection={this._fetchUserComicCollection } userComicCollection = {this.state.userComicCollection}/>} 
+          <ComicCollection {...routeProps} fetchUserComicCollection={this._fetchUserComicCollection } userComicCollection = {this.state.userComicCollection} backgroundImage = {this._setBackGroundImage}/>} 
           />
         </div>
       </Router>

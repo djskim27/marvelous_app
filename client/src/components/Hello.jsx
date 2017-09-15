@@ -14,7 +14,7 @@ const FormContainer = styled.div`
 `
 const SignIn = styled.div`
   margin-top: 5%;
-  background: rgba(255,255,255, 0.6)
+  background: rgba(255,255,255, 0)
 
 `
 
@@ -74,7 +74,7 @@ _createNewCollection = async () => {
    return (
      <SignIn className='container'>
      <FormContainer className='text-right'>
-       <form onSubmit={this._signUp}>
+       <form onSubmit={this._signUp} className='form'>
          <div>
            <label htmlFor="email">E-mail: </label>
            <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />

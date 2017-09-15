@@ -4,19 +4,19 @@ import axios from 'axios';
 import {saveAuthTokens} from '../util'
 import styled from 'styled-components'
 
-const FormContainer = styled.div`
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
+const Container = styled.div`
+margin-top: 5%;
+display:flex;
+justify-content: center;
+align-items: center;
 `
-
-const Middle = styled.div`
-  background: rgba(255,255,255,0.8)
- 
+const ButtonDiv = styled.div`
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 `
-
 class SignIn extends Component {
  constructor(){
    super();
@@ -51,9 +51,8 @@ class SignIn extends Component {
      return <Redirect to="/" />
    }
    return (
-     <FormContainer>
-       <Middle className='text-right'>
-       <form onSubmit={this._signIn}>
+     <Container className='text-right'>
+       <form onSubmit={this._signIn} className='form'>
          <div>
            <label htmlFor="email">E-mail: </label>
            <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
@@ -63,14 +62,13 @@ class SignIn extends Component {
            <input onChange={this._handleChange} type="text" name="password" value={this.state.password} />
          </div>
 
-         
-         <button className='btn marvel-btn text-center'>Log In</button>
-       
+         <ButtonDiv>
+         <button className='btn marvel-btn'>Log In</button>
+         <p>Not a user? Sign up <a href='/signup'>here</a></p>
+
+         </ButtonDiv>
        </form>
-       </Middle>
-
-
-     </FormContainer>
+     </Container>
    );
  }
 }

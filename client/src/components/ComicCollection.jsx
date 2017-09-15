@@ -12,50 +12,78 @@ img {
     margin: 10px;
 }
 `
-
+const ComicListContainer = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+`
 
 
 export default class ComicCollection extends Component {
   constructor(){
     super();
     this.state = {
-
+      carouselMode: false
     }
   }
 
   componentWillMount(){
     this.props.fetchUserComicCollection()
   }
-
+  
+  toggleCarouselMode = (e) => {
+    e.preventDefault();
+    this.setState({carouselMode: !this.state.carouselMode})
+  }
   render() {
     const userComicCollection = this.props.userComicCollection
     const userComicList = userComicCollection.map((comic, i) => {
-      return <UserComicCard comic={comic} fetch={this.props.fetchUserComicCollection}/>
+      return <UserComicCard comic={comic} fetch={this.props.fetchUserComicCollection} backgroundImage={this.props.backgroundImage}/>
     })
 
     return (
       <div>
-<StyleRoot>
-  <Coverflow
-    displayQuantityOfSide={2}
-    navigation={true}
-    enableHeading={true}
-    media={{
-      '@media (max-width: 768px)': {
-        width: '300px',
-        height: '150px'
-      },
-      '@media (min-width: 900px)': {
-        width: '960px',
-        height: '600px'
-      }
-    }}
-    >
-    {userComicCollection.map((comic, i) => {
-      return <ComicDiv><img src={comic.thumbnail}/></ComicDiv>
-    })}
-  </Coverflow>
-  </StyleRoot>
+        
+        {this.state.carouselMode? 
+        <div>
+          <button className='btn marvel-btn' onClick={this.toggleCarouselMode}>Normal Mode</button>
+        <StyleRoot>
+          <Coverflow
+            displayQuantityOfSide={2}
+            navigation={true}
+            enableHeading={true}
+            media={{
+              '@media (max-width: 768px)': {
+                width: '300px',
+                height: '150px'
+              },
+              '@media (min-width: 900px)': {
+                width: '960px',
+                height: '600px'
+              }
+            }}
+            >
+            {userComicCollection.map((comic, i) => {
+              return <ComicDiv><img src={comic.thumbnail}/></ComicDiv>
+            })}
+          </Coverflow>
+        </StyleRoot> 
+        </div>
+        :
+        <div>
+        <button className='btn marvel-btn' onClick={this.toggleCarouselMode}>Carousel Mode</button>
+        <ComicListContainer>
+        
+        {userComicList}
+
+
+
+
+        </ComicListContainer>
+        </div>
+        }
+
           
       </div>
     )
