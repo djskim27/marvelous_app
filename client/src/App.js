@@ -153,7 +153,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <MainNavBar />
+          <MainNavBar  handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
           <div className="App">
             <SearchBar handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
           </div>

@@ -11,3 +11,68 @@ body {
   background-size: cover;
 
 }
+
+.custom-nav {
+  border-radius: 0;
+  background: black;
+  border-color: rgba(0,0,0,0)
+  
+}
+
+.nav-brand {
+  background: red!important;
+}
+
+.nav-brand:hover {
+  background: rgba(255, 0, 0, 0.43)!important;
+}
+
+.nav-item {
+  background: red;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-family: 'Bangers', cursive;
+  font-size: 20px;
+}
+
+.nav-item:hover {
+  background: rgba(255, 0, 0, 0.43);
+  margin-left: 5px;
+  margin-right: 5px;
+  font-family: 'Bangers', cursive;
+  font-size: 21px;
+}
+
+
+.navbar-inverse .navbar-nav>li>a{
+  color: white!important;
+}
+
+.search {
+  background: rgba(255, 255, 255, 0.00);
+  color: white;
+  border-radius: 0;
+  border-top-color: black;
+  border-left-color: black;
+  border-right-color: black;
+  font-family: 'Boogaloo', cursive;
+  font-size: 20px;  
+}
+
+.search-submit {
+  background: black;
+  border-radius: 0;
+  border-color: white;
+  
+}
+
+.search-submit:hover {
+  background: red;
+  border-color: red;
+}
+
+a.a-remove-decoration {
+  text-decoration: none;
+  color: white;
+  
+}
