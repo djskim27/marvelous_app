@@ -66,12 +66,7 @@ _setBG = () => {
       </ComicCard>
       <ButtonDiv>
       <button className='btn marvel-btn' onClick={this._deleteComic}>Delete</button>
-      {this.state.setBG?
-      <div>Hi</div>
-      :
-      <button className='btn marvel-btn' onClick={() => {this.props.backgroundImage(this.props.comic.thumbnail); this._setBG}}>Set BG</button>
-      }
-    
+      <button className='btn marvel-btn' onClick={() => {this.props.backgroundImage(this.props.comic.thumbnail)}}>Set BG</button>
       </ButtonDiv>
       </div>
     )

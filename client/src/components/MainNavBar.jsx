@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
 import {Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl} from 'react-bootstrap';
@@ -40,7 +40,7 @@ p {
   
 `
 
-export default class MainNavBar extends Component {
+class MainNavBar extends Component {
   constructor(){
     super();
     this.state = {
@@ -65,11 +65,13 @@ export default class MainNavBar extends Component {
     });
   };
   
-  _logOut = async () => {
+  _logOut = async (history) => {
     console.log("CLICK");
     const response = await axios.delete("/auth/sign_out");
     //Forces refresh of browser
     window.location.reload();
+    this.props.history.push('/')
+
   };
 
   
@@ -161,3 +163,4 @@ export default class MainNavBar extends Component {
 
   }
 }
+export default withRouter(MainNavBar);
