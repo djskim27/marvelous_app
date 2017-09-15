@@ -41,9 +41,9 @@ export default class ComicCollection extends Component {
     navigation={true}
     enableHeading={true}
     media={{
-      '@media (max-width: 900px)': {
-        width: '600px',
-        height: '300px'
+      '@media (max-width: 768px)': {
+        width: '300px',
+        height: '150px'
       },
       '@media (min-width: 900px)': {
         width: '960px',

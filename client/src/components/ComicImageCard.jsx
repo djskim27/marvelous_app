@@ -3,15 +3,29 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import ComicShow from './ComicShow'
+import FaClose from 'react-icons/lib/fa/close'
 
 
 const ComicCard = styled.div`
-
+margin: 5%;
 img {
     width: 200px;
     height: 304px;
     margin: 10px;
+    transition: 1s ease;
+    border: white 4px solid;
 }
+img:hover{
+    -webkit-transform: scale(1.05) rotateZ(-1deg);
+    -ms-transform: scale(1.05) rotateZ(-1deg);
+    transform: scale(1.05) rotateZ(-1deg);
+    transition: 1s ease;
+}
+`
+const ButtonDiv = styled.div`
+display: flex;
+justify-content: center;
+align-item: center;
 `
 const customStyles = {
     
@@ -25,12 +39,12 @@ const customStyles = {
     },
     content : {
       position                   : 'absolute',
-      top                        : '100px',
-      left                       : '400px',
-      right                      : '400px',
-      bottom                     : '100px',
+      top                        : '5%',
+      left                       : '20%',
+      right                      : '20%',
+      bottom                     : '5%',
       border                     : '1px solid #ccc',
-      background                 : '#fff',
+      background                 : 'rgba(0,0,0,0.85)',
       overflow                   : 'auto',
       WebkitOverflowScrolling    : 'touch',
       borderRadius               : '4px',
@@ -68,11 +82,15 @@ export default class ComicImageCard extends Component {
                 <ComicCard> 
                 <img src={`${comic.thumbnail.path}.jpg`} onClick={this._toggleModal}/>
                 {/* <button onClick={this._toggleModal}>Close Modal</button> */}
-                <Modal isOpen={this.state.isActive} style={customStyles} contentLabel="Example Modal">
+                <Modal isOpen={this.state.isActive} style={customStyles} contentLabel="Example Modal" className='shadow'>
                 
                 <ComicShow comicId = {comic.id}/>
+                <br/>
+                <br/>
+                <br/>
+                <ButtonDiv><button onClick={this._toggleModal} className='marvel-btn'><FaClose size={30}/></button></ButtonDiv>
 
-                <button onClick={this._toggleModal}>Close Modal</button>
+                
                 </Modal>
                 </ComicCard>
                 }

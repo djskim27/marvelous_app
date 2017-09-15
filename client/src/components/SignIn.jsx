@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import {saveAuthTokens} from '../util'
+import styled from 'styled-components'
+
+const FormContainer = styled.div`
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+`
+
+const Middle = styled.div`
+  background: rgba(255,255,255,0.8)
+ 
+`
 
 class SignIn extends Component {
  constructor(){
@@ -37,7 +51,8 @@ class SignIn extends Component {
      return <Redirect to="/" />
    }
    return (
-     <div>
+     <FormContainer>
+       <Middle className='text-right'>
        <form onSubmit={this._signIn}>
          <div>
            <label htmlFor="email">E-mail: </label>
@@ -49,10 +64,13 @@ class SignIn extends Component {
          </div>
 
          
-         <button>Log In</button>
+         <button className='btn marvel-btn text-center'>Log In</button>
        
        </form>
-     </div>
+       </Middle>
+
+
+     </FormContainer>
    );
  }
 }

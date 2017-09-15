@@ -76,3 +76,28 @@ a.a-remove-decoration {
   color: white;
   
 }
+
+.shadow {
+  -webkit-box-shadow: 8px 7px 9px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 8px 7px 9px 0px rgba(0,0,0,0.75);
+  box-shadow: 8px 7px 9px 0px rgba(0,0,0,0.75);
+}
+
+.comic-title {
+  font-size: 30px;
+  font-family: 'Bangers', cursive;
+}
+
+.marvel-btn {
+  background: red;
+  font-family: 'Boogaloo', cursive;
+  font-size: 20px;
+  color: white;
+}
+
+.marvel-btn:hover {
+  background: rgba(255, 0, 0, 0.43);
+  font-family: 'Boogaloo', cursive;
+  font-size: 21px;
+  color: white;
+}

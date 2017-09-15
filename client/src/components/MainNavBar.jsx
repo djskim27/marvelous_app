@@ -88,14 +88,15 @@ export default class MainNavBar extends Component {
         </Navbar.Brand>
         <Navbar.Toggle />
         </Navbar.Header>
+        <Navbar.Collapse>
         <Navbar.Form pullLeft>
           <FormGroup>
             <FormControl onChange={this.props.handleChange} type="text" name="input" value={this.props.input} placeholder="Search For A Comic"className='search' />
           </FormGroup>
           {' '}
-          <button onClick={this.props.searchMarvelData} className="search-submit"><TiArrowForward size={18} color='white'/></button>
+          <button onClick={this.props.searchMarvelData} className="btn search-submit"><TiArrowForward size={18} color='white'/></button>
       </Navbar.Form>
-        <Navbar.Collapse>
+        
         <Nav>
             
         </Nav>

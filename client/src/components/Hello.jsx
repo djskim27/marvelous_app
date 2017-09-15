@@ -3,7 +3,20 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import GiphySelect from 'react-giphy-select';
 import 'react-giphy-select/lib/styles.css';
+import styled from 'styled-components';
 import {saveAuthTokens} from '../util'
+
+const FormContainer = styled.div`
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const SignIn = styled.div`
+  margin-top: 5%;
+  background: rgba(255,255,255, 0.6)
+
+`
 
 class Hello extends Component {
  constructor(){
@@ -15,7 +28,8 @@ class Hello extends Component {
        password: '',
        password_confirmation: '',
        image:'',
-       redirect: false
+       redirect: false,
+       useGiphy: false
    }
  }
 
@@ -49,12 +63,17 @@ _createNewCollection = async () => {
    this.setState(newState);
  }
 
+ _useGiphy = (e) => {
+   e.preventDefault();
+   this.setState({useGiphy: true})
+ }
  render() {
    if (this.state.redirect){
      return <Redirect to="/" />
    }
    return (
-     <div>
+     <SignIn className='container'>
+     <FormContainer className='text-right'>
        <form onSubmit={this._signUp}>
          <div>
            <label htmlFor="email">E-mail: </label>
@@ -76,11 +95,20 @@ _createNewCollection = async () => {
            <label htmlFor="image">Profile GIF </label>
            <input onChange={this._handleChange} type="text" name="image" value={this.state.image} />
          </div>
-         
-         <button>Sign Up</button>
+         <br/>
+         <FormContainer>
+         <button className='btn marvel-btn'>Sign Up</button>
+         </FormContainer>
        </form>
-      <GiphySelect/>
-     </div>
+      
+       
+      
+     </FormContainer>
+        <br/>
+        <FormContainer>
+       {this.state.useGiphy? <GiphySelect className='giphy'/> : <button className='btn marvel-btn' onClick={this._useGiphy}>GIPHY</button> }
+       </FormContainer>
+     </SignIn>
    );
  }
 }
