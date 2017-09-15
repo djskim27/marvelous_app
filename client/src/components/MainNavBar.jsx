@@ -98,18 +98,21 @@ export default class MainNavBar extends Component {
       </Navbar.Form>
         
         <Nav>
-            
+           
+
         </Nav>
         {this.state.loggedIn?
           <Nav pullRight>
+
             
-            <NavItem eventKey={1} className='nav-item'><Link to='/profile' className='a-remove-decoration'>My Profile</Link></NavItem>
+            <NavItem eventKey={1} className='nav-item'><Link to='/profile' className='a-remove-decoration'>{this.state.user.nickname}</Link></NavItem>
          
             <NavItem eventKey={2} className='nav-item' onClick={this._logOut}>Log Out</NavItem>
             
         </Nav>
         :
         <Nav pullRight>
+            
             
             <NavItem eventKey={1} className='nav-item'><Link to='/signup' className='a-remove-decoration'>Sign Up</Link></NavItem>
          

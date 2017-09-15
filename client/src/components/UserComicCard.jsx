@@ -27,7 +27,8 @@ export default class UserComicCard extends Component {
     constructor(){
         super();
         this.state = {
-            redirect: false
+            redirect: false,
+            setBG: false
         }
     }
 
@@ -48,6 +49,10 @@ _changeBackground = () => {
     // this.props.backgroundImage(this.props.comic.thumbnail)
 }
 
+_setBG = () => {
+    this.setState({setBG: true})
+}
+
   render() {
       const comics = this.props.comic
     return (
@@ -61,7 +66,12 @@ _changeBackground = () => {
       </ComicCard>
       <ButtonDiv>
       <button className='btn marvel-btn' onClick={this._deleteComic}>Delete</button>
-      <button className='btn marvel-btn' onClick={() => {this.props.backgroundImage(this.props.comic.thumbnail)}}>Set BG</button>
+      {this.state.setBG?
+      <div>Hi</div>
+      :
+      <button className='btn marvel-btn' onClick={() => {this.props.backgroundImage(this.props.comic.thumbnail); this._setBG}}>Set BG</button>
+      }
+    
       </ButtonDiv>
       </div>
     )

@@ -77,7 +77,7 @@ class App extends Component {
     const privateKey = process.env.REACT_APP_PRIVATE_API_KEY;
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
-    const url = `https://gateway.marvel.com/v1/public/comics?limit=20&offset=1500&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+    const url = `https://gateway.marvel.com/v1/public/comics?limit=100&offset=1500&ts=${ts}&apikey=${publicKey}&hash=${hash}`
     console.log(url)
     
     try {
@@ -109,7 +109,7 @@ class App extends Component {
     const privateKey = process.env.REACT_APP_PRIVATE_API_KEY;
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
-    const url = `https://gateway.marvel.com/v1/public/comics?titleStartsWith=${this.state.input}&ts=${ts}&apikey=${publicKey}&hash=${hash}`
+    const url = `https://gateway.marvel.com/v1/public/comics?titleStartsWith=${this.state.input}&limit=24&offset=10&ts=${ts}&apikey=${publicKey}&hash=${hash}`
     console.log(url)
     try {
       const res = await axios.get(url,

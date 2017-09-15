@@ -18,7 +18,12 @@ flex-wrap: wrap;
 justify-content: center;
 align-items: center;
 `
-
+const ButtonDiv = styled.div`
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
 
 export default class ComicCollection extends Component {
   constructor(){
@@ -47,7 +52,9 @@ export default class ComicCollection extends Component {
         
         {this.state.carouselMode? 
         <div>
+          <ButtonDiv>
           <button className='btn marvel-btn' onClick={this.toggleCarouselMode}>Normal Mode</button>
+          </ButtonDiv>
         <StyleRoot>
           <Coverflow
             displayQuantityOfSide={2}
@@ -72,7 +79,9 @@ export default class ComicCollection extends Component {
         </div>
         :
         <div>
+        <ButtonDiv>
         <button className='btn marvel-btn' onClick={this.toggleCarouselMode}>Carousel Mode</button>
+        </ButtonDiv>
         <ComicListContainer>
         
         {userComicList}

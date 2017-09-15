@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled, {ThemeProvider} from 'styled-components';
 import '../App.css';
 import {Link} from 'react-router-dom'
-
+import Moment from 'react-moment'
 
 
 export default class Profile extends Component {
@@ -69,6 +69,7 @@ export default class Profile extends Component {
     background-size: cover;
     border: white 5px solid;
     padding: 20%;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
     
     h1 {
       color: black;
@@ -81,7 +82,11 @@ export default class Profile extends Component {
     }
   `
   const ProfileWrapper = styled.div`
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.7);
+    border:white 2px solid;
+    -moz-box-shadow:    1px 1px 2px 3px black;
+    -webkit-box-shadow: 1px 1px 2px 3px black;
+    box-shadow:         1px 1px 2px 3px black;
     margin: -20%
     
 
@@ -95,6 +100,9 @@ export default class Profile extends Component {
     
   }
   `
+  
+
+  
     return (
       <ProfileContainer class='container'>
         <div>
@@ -103,14 +111,17 @@ export default class Profile extends Component {
             <ProfileWrapper>
           <h1>{this.state.user.nickname}</h1>
           <ImgDiv><img src={this.state.user.image}/></ImgDiv>
-          
+          <div className='text-left'>
           <h3><strong>Email:</strong> {this.state.user.email}</h3>
-          <h3>Created At: {this.state.user.created_at}</h3>
-          <h3>Updated At: {this.state.user.updated_at}</h3>
-          <Link to='/profile/edit'><button>Edit Profile</button></Link>
+          <h3><strong>Member Since:</strong> <Moment format="MM/DD/YYYY">{this.state.user.created_at}</Moment></h3>
+          </div>
+        
+          <Link to='/profile/edit'><button className='btn marvel-btn2'>Edit Profile</button></Link>
 
-          <a href='/signup'><button onClick={this._deleteCurrentUser}>Delete Profile</button></a>
-          <Link to={'/collection'}>View Comic Collection</Link>
+          <a href='/signup'><button onClick={this._deleteCurrentUser} className='btn marvel-btn2'>Delete Profile</button></a>
+       
+   
+          <Link to={'/collection'}><button className='btn marvel-btn2'>Comic Collection</button></Link>
           </ProfileWrapper>
           </ProfileDescription>
           </ThemeProvider>
