@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 import {Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl} from 'react-bootstrap';
 import {TiArrowForward} from 'react-icons/lib/ti'
+import {MdSearch} from 'react-icons/lib/md'
 
 
 // const Nav = styled.div`
