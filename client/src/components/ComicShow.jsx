@@ -105,12 +105,12 @@ export default class ComicShow extends Component {
             <img src={comic.thumbnail}/>}
         </ImgDiv>
         <DescriptionDiv>
-        <p className='comic-title'>{comic.title}</p>
-        <p><strong>Description:</strong> {comic.description}</p>
-        <p><strong>Release Date:</strong> <Moment format="MM/DD/YYYY">{comic.releaseDate}</Moment></p>
-        {this.state.comicAdded? 
-        <button className='btn-success'>Comic Added</button>:<button onClick={this._addComicToCollection} className='btn-danger'>Add Comic</button>}
-        
+            <p className='comic-title'>{comic.title}</p>
+            <p><strong>Description:</strong> {comic.description}</p>
+            <p><strong>Release Date:</strong> <Moment format="MM/DD/YYYY">{comic.releaseDate}</Moment></p>
+            {this.state.comicAdded? 
+            <button className='btn-success'>Comic Added</button>:<button onClick={this._addComicToCollection} className='btn-danger'>Add Comic</button>}
+            
         </DescriptionDiv>
       </ShowPageContainer>
     )

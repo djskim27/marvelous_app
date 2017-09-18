@@ -27,6 +27,7 @@ display: flex;
 justify-content: center;
 align-item: center;
 `
+//for carousel
 const customStyles = {
     
     overlay : {
@@ -75,13 +76,12 @@ export default class ComicImageCard extends Component {
 
     return (
         <div>
-            {/* <Link to={`/comics/${comic.id}`}> */}
+
                 {comic.thumbnail.path === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available'?
                 <ComicCard> <img src={`https://i.imgur.com/yLppAf3.png`} /> </ComicCard>
                 :
                 <ComicCard> 
                 <img src={`${comic.thumbnail.path}.jpg`} onClick={this._toggleModal}/>
-                {/* <button onClick={this._toggleModal}>Close Modal</button> */}
                 <Modal isOpen={this.state.isActive} style={customStyles} contentLabel="Example Modal" className='shadow'>
                 
                 <ComicShow comicId = {comic.id}/>
@@ -95,7 +95,6 @@ export default class ComicImageCard extends Component {
                 </ComicCard>
                 }
                 
-            {/* </Link> */}
         </div>
     )
   }

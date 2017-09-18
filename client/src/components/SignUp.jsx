@@ -18,7 +18,7 @@ const SignIn = styled.div`
 
 `
 
-class Hello extends Component {
+class SignUp extends Component {
  constructor(){
    super();
    this.state = {
@@ -113,4 +113,4 @@ _createNewCollection = async () => {
  }
 }
 
-export default Hello;
+export default SignUp;

@@ -84,7 +84,7 @@ export default class EditProfile extends Component {
         :
           <div>
          
-          <form onSubmit={this._editUser} className='form text-center'>
+         <form onSubmit={this._editUser} className='form text-center'>
           <div className = 'text-center comic-title'>
           <h1>Edit User</h1>
           </div>

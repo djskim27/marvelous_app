@@ -8,7 +8,7 @@ import HomePage from './components/HomePage';
 import ComicIndex from './components/ComicIndex';
 import ComicShow from './components/ComicShow';
 import SignIn from './components/SignIn';
-import Hello from './components/Hello';
+import SignUp from './components/SignUp';
 import SearchBar from './components/SearchBar';
 import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
@@ -16,34 +16,6 @@ import ComicCollection from './components/ComicCollection';
 import {setAxiosDefaults} from './util';
 import Modal from 'react-modal';
 
-const customStyles = {
-  
-  overlay : {
-    position          : 'fixed',
-    top               : 0,
-    left              : 0,
-    right             : 0,
-    bottom            : 0,
-    backgroundColor   : 'rgba(150, 20, 8, 0.46)'
-  },
-  content : {
-    position                   : 'absolute',
-    top                        : '100px',
-    left                       : '400px',
-    right                      : '400px',
-    bottom                     : '100px',
-    border                     : '1px solid #ccc',
-    background                 : '#fff',
-    overflow                   : 'auto',
-    WebkitOverflowScrolling    : 'touch',
-    borderRadius               : '4px',
-    outline                    : 'none',
-    padding                    : '20px'
-
-  }
-
-
-}
 
 
 class App extends Component {
@@ -175,7 +147,7 @@ class App extends Component {
         {/* <Route exact path = '/comics/:id' component={ComicShow}/> */}
       
         <Route exact path = '/signin' component={SignIn} />
-        <Route exact path = '/signup' component ={Hello} />
+        <Route exact path = '/signup' component ={SignUp} />
         {/* <Route exact path = '/profile' component ={Profile}/> */}
         <Route exact path = '/profile'  render={routeProps => 
           <Profile {...routeProps} background = {background}/>}/>

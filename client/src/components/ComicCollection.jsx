@@ -79,21 +79,17 @@ export default class ComicCollection extends Component {
         </div>
         :
         <div>
-        <ButtonDiv>
-        <button className='btn marvel-btn' onClick={this.toggleCarouselMode}>Carousel Mode</button>
-        </ButtonDiv>
-        <ComicListContainer>
-        
-        {userComicList}
+          <ButtonDiv>
+          <button className='btn marvel-btn' onClick={this.toggleCarouselMode}>Carousel Mode</button>
+          </ButtonDiv>
+          <ComicListContainer>
+          
+          {userComicList}
 
-
-
-
-        </ComicListContainer>
+          </ComicListContainer>
         </div>
         }
 
-          
       </div>
     )
   }
