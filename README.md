@@ -6,7 +6,7 @@ In early 2014, Marvel Comics released a groundbreaking API that allowed users to
 
 'Marvelous' is a simple 'Marvel Comics' web application that takes the rich history of Marvel and turns it into a vivid online comic museum! Users can search for comic titles based off specific Marvel superheroes and add their favorite cover artworks into their own personal collection!
 
-## Features of ScheduLIT
+## Features of Marvelous
 
 * User can log in
 * User can log out
