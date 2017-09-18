@@ -39,7 +39,7 @@ const customStyles = {
     },
     content : {
       position                   : 'absolute',
-      top                        : '5%',
+      top                        : '10%',
       left                       : '20%',
       right                      : '20%',
       bottom                     : '5%',
