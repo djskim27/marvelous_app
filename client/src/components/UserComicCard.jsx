@@ -2,6 +2,39 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 import styled from 'styled-components'
+import UserComicShow from './UserComicShow'
+import Modal from 'react-modal';
+import FaClose from 'react-icons/lib/fa/close'
+
+const customStyles = {
+    
+    overlay : {
+      position          : 'fixed',
+      top               : 0,
+      left              : 0,
+      right             : 0,
+      bottom            : 0,
+      backgroundColor   : 'rgba(150, 20, 8, 0.46)'
+    },
+    content : {
+      position                   : 'absolute',
+      top                        : '10%',
+      left                       : '10%',
+      right                      : '10%',
+      bottom                     : '5%',
+      border                     : '1px solid #ccc',
+      background                 : 'rgba(0,0,0,0.85)',
+      overflow                   : 'auto',
+      WebkitOverflowScrolling    : 'touch',
+      borderRadius               : '4px',
+      outline                    : 'none',
+      padding                    : '20px'
+    }
+
+  
+  
+  
+  }
 
 const ComicCard = styled.div`
 margin: 5%;
@@ -28,8 +61,11 @@ export default class UserComicCard extends Component {
         super();
         this.state = {
             redirect: false,
-            setBG: false
+            setBG: false,
+            isActive: false
         }
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
 _deleteComic = async() => {
@@ -53,14 +89,35 @@ _setBG = () => {
     this.setState({setBG: true})
 }
 
+openModal = () => {
+    this.setState({
+        isActive: true
+    })
+}
+
+closeModal = () => {
+    this.setState({
+        isActive: false
+    })
+}
+
   render() {
       const comics = this.props.comic
     return (
     <div>
       <ComicCard>
  
-          <img src={this.props.comic.thumbnail}/>
-           
+          <img src={this.props.comic.thumbnail} onClick={this.openModal}/>
+          <Modal isOpen={this.state.isActive} style={customStyles} contentLabel="Example Modal" className='shadow' onRequestClose={this.closeModal} shouldCloseOnOverlayClick={true}>
+                
+            <UserComicShow comicId = {this.props.comic.api_id}/>
+            <br/>
+            <br/>
+            <br/>
+            <ButtonDiv><button onClick={this.closeModal} className='marvel-btn'><FaClose size={30}/></button></ButtonDiv>
+
+            
+         </Modal>
        
 
       </ComicCard>

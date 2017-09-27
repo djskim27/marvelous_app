@@ -81,7 +81,9 @@ a.a-remove-decoration {
   -webkit-box-shadow: 8px 7px 9px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 8px 7px 9px 0px rgba(0,0,0,0.75);
   box-shadow: 8px 7px 9px 0px rgba(0,0,0,0.75);
+  
 }
+
 
 .comic-title {
   font-size: 30px;

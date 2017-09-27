@@ -23,7 +23,7 @@ const DescriptionDiv = styled.div`
     font-family: "Comic Sans MS", cursive, sans-serif;
     
 `
-export default class ComicShow extends Component {
+export default class UserComicShow extends Component {
     constructor(){
           super();
           this.state = {
@@ -33,7 +33,7 @@ export default class ComicShow extends Component {
                   description:'',
                   releaseDate:''
               },
-              comicAdded: false
+
           }
       }
 
@@ -76,23 +76,6 @@ export default class ComicShow extends Component {
         }
     }
 
-    _addComicToCollection = async (e) => {
-        e.preventDefault();
-        const payload = {
-            api_id: this.state.comicData.api_id,
-            title: this.state.comicData.title,
-            thumbnail: this.state.comicData.thumbnail
-        }
-        try{
-            const res = await axios.post('/api/comics', payload)
-            this.setState({comicAdded: true})
-            return res.data
-
-        } catch(err) {
-            console.log(err);
-        }
-
-    }
     render() {
         const comic = this.state.comicData
     return (
@@ -107,8 +90,7 @@ export default class ComicShow extends Component {
             <p className='comic-title'>{comic.title}</p>
             <p><strong>Description:</strong> {comic.description}</p>
             <p><strong>Release Date:</strong> <Moment format="MM/DD/YYYY">{comic.releaseDate}</Moment></p>
-            {this.state.comicAdded? 
-            <button className='btn-success'>Comic Added</button>:<button onClick={this._addComicToCollection} className='btn-danger'>Add Comic</button>}
+            
             
         </DescriptionDiv>
       </ShowPageContainer>

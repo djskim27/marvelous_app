@@ -6,6 +6,7 @@ import ComicShow from './ComicShow'
 import FaClose from 'react-icons/lib/fa/close'
 
 
+
 const ComicCard = styled.div`
 margin: 5%;
 img {
@@ -27,7 +28,7 @@ display: flex;
 justify-content: center;
 align-item: center;
 `
-//for carousel
+//for modal
 const customStyles = {
     
     overlay : {
@@ -41,8 +42,8 @@ const customStyles = {
     content : {
       position                   : 'absolute',
       top                        : '10%',
-      left                       : '20%',
-      right                      : '20%',
+      left                       : '10%',
+      right                      : '10%',
       bottom                     : '5%',
       border                     : '1px solid #ccc',
       background                 : 'rgba(0,0,0,0.85)',
@@ -51,8 +52,9 @@ const customStyles = {
       borderRadius               : '4px',
       outline                    : 'none',
       padding                    : '20px'
-  
     }
+
+  
   
   
   }
@@ -63,13 +65,22 @@ export default class ComicImageCard extends Component {
         this.state = {
             isActive: false
         }
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
-    _toggleModal = () => {
+
+    openModal = () => {
         this.setState({
-          isActive: !this.state.isActive
+            isActive: true
         })
-      }
+    }
+
+    closeModal = () => {
+        this.setState({
+            isActive: false
+        })
+    }
    
   render() {
     const comic = this.props.comic;
@@ -81,14 +92,14 @@ export default class ComicImageCard extends Component {
                 <ComicCard> <img src={`https://i.imgur.com/yLppAf3.png`} /> </ComicCard>
                 :
                 <ComicCard> 
-                <img src={`${comic.thumbnail.path}.jpg`} onClick={this._toggleModal}/>
-                <Modal isOpen={this.state.isActive} style={customStyles} contentLabel="Example Modal" className='shadow'>
+                <img src={`${comic.thumbnail.path}.jpg`} onClick={this.openModal}/>
+                <Modal isOpen={this.state.isActive} style={customStyles} contentLabel="Example Modal" className='shadow' onRequestClose={this.closeModal} shouldCloseOnOverlayClick={true}>
                 
                 <ComicShow comicId = {comic.id}/>
                 <br/>
                 <br/>
                 <br/>
-                <ButtonDiv><button onClick={this._toggleModal} className='marvel-btn'><FaClose size={30}/></button></ButtonDiv>
+                <ButtonDiv><button onClick={this.closeModal} className='marvel-btn'><FaClose size={30}/></button></ButtonDiv>
 
                 
                 </Modal>

@@ -3,13 +3,16 @@ import ComicImageCard from './ComicImageCard'
 import styled from 'styled-components'
 
 const ComicContainer = styled.div`
-margin-top: 10px;
-margin-left: 10%;
-margin-right: 10%;
-padding: 10px;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @media (max-width: 414px) {
+    margin-top: 8%;
+}
 `
 
 export default class ComicIndex extends Component {

@@ -19,6 +19,7 @@ justify-content: center;
 align-items: center;
 `
 const ButtonDiv = styled.div`
+margin-top: 5%;
 display:flex;
 flex-direction: column;
 justify-content: center;

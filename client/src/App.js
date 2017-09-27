@@ -27,7 +27,7 @@ class App extends Component {
       userComicCollection:[],
       isActive: false,
 
-      backgroundImage: 'http://media.comicbook.com/uploads1/2015/02/amazing-spider-man-136-cover-123891.jpg'
+      backgroundImage: 'http://i.annihil.us/u/prod/marvel/i/mg/5/03/599b01410a695.jpg'
       
     }
   }
@@ -135,9 +135,7 @@ class App extends Component {
       <Router>
         <div>
           <MainNavBar  handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
-          <div className="App">
-            <SearchBar handleChange={this._handleChange} searchMarvelData={this._searchMarvelData} input={this.state.input}/>
-          </div>
+
 
 
 
