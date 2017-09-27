@@ -14,7 +14,10 @@ const FormContainer = styled.div`
 `
 const SignIn = styled.div`
   margin-top: 5%;
-  background: rgba(255,255,255, 0)
+  background: rgba(255,255,255, 0);
+  @media (max-width:414px) {
+    margin-top: 15%;
+}
 
 `
 

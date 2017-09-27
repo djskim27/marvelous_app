@@ -14,6 +14,10 @@ const ImgDiv = styled.div`
     img {
         width: 320px;
         height: 495px;
+        @media (max-width:414px) {
+            width: 192px;
+            height: 297px;
+        }
     }
 `
 

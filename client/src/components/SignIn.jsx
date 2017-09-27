@@ -10,6 +10,9 @@ margin-top: 5%;
 display:flex;
 justify-content: center;
 align-items: center;
+@media (max-width:414px) {
+    margin-top: 15%;
+}
 `
 const ButtonDiv = styled.div`
 display:flex;
