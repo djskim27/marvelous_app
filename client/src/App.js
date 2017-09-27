@@ -50,7 +50,6 @@ class App extends Component {
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
     const url = `https://gateway.marvel.com/v1/public/comics?limit=100&offset=1500&ts=${ts}&apikey=${publicKey}&hash=${hash}`
-    console.log(url)
     
     try {
       const res = await axios.get(url, 
@@ -65,7 +64,6 @@ class App extends Component {
         }]
       });
       this.setState({marvelData: res.data.data.results});
-      console.log(this.state.marvelData)
       return res.data.data.results;
       
 
@@ -82,7 +80,6 @@ class App extends Component {
     const ts = Date.now();
     const hash = md5(ts + privateKey + publicKey)
     const url = `https://gateway.marvel.com/v1/public/comics?titleStartsWith=${this.state.input}&limit=24&offset=10&ts=${ts}&apikey=${publicKey}&hash=${hash}`
-    console.log(url)
     try {
       const res = await axios.get(url,
         { transformRequest: [(data, headers) => {
@@ -107,7 +104,6 @@ class App extends Component {
   _fetchUserComicCollection = async() => {
     try {
       const res = await axios.get('/api/comics');
-      console.log(res.data)
       this.setState({userComicCollection: res.data})
       return res.data
     }
