@@ -83,7 +83,7 @@ class MainNavBar extends Component {
 
         <Navbar.Header>
         <Navbar.Brand className='nav-brand'>
-        <Link to="/">
+        <Link to="/" onClick={this.props.setDefault}>
           <MarvelFont>
             <p>Marvelous</p>
           </MarvelFont>
