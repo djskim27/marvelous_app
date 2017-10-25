@@ -24,7 +24,7 @@ const ImgDiv = styled.div`
 const DescriptionDiv = styled.div`
     width: 300px;
     color: white;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "Arial";
     
 `
 export default class ComicShow extends Component {
