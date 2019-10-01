@@ -19,17 +19,13 @@ import Modal from 'react-modal';
 
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
+   state = {
       marvelData: [],
       input: '',
       userComicCollection:[],
       isActive: false,
 
       backgroundImage: 'http://i.annihil.us/u/prod/marvel/i/mg/5/03/599b01410a695.jpg'
-      
-    }
   }
 
   componentWillMount(){
@@ -108,7 +104,7 @@ class App extends Component {
       return res.data
     }
     catch(err) {
-
+      console.log('Error', err)
     }
 
   }
@@ -124,9 +120,7 @@ class App extends Component {
   }
 
   render() {
-    const background = {
-    url: this.state.backgroundImage
-  }
+    const background = { url: this.state.backgroundImage }
     return (
       <Router>
         <div>
