@@ -17,8 +17,9 @@ const ComicContainer = styled.div`
 
 export default class ComicIndex extends Component {
   render() {
-    const comics = this.props.comics
-    const comicList = comics.map((comic, i) => {
+    const {comics} = this.props
+    const comicsCopy = [...comics]
+    const comicList = comicsCopy.map((comic, i) => {
       return(
         
           <ComicImageCard comic = {comic} key={i}/>
